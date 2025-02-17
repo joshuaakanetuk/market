@@ -41,6 +41,9 @@ export function ProductsView() {
     const query = useQuery({ queryKey: ['products'], queryFn: fetchProducts })
 
     return (
-        <ProductGrid products={(query.data as EbayProduct[])} />
+      <div>
+      {query.data ? <ProductGrid products={query.data} /> : <></>}
+    </div>
+       
     )
 }

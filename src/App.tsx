@@ -13,8 +13,10 @@ const queryClient = new QueryClient()
 function App() {
   return (
       <QueryClientProvider client={queryClient}>
-        <EbaySearchModal />
-        <ProductsView/>
+       <div className='w-full'>
+       <EbaySearchModal />
+       <ProductsView/>
+       </div>
       </QueryClientProvider>
   )
 }
