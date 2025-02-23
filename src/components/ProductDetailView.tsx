@@ -5,6 +5,8 @@ interface ProductDetailViewProps {
   onBack: () => void;
 }
 
+import { createProduct } from "../lib/ebay"
+
 export function ProductDetailView({ product, onBack }: ProductDetailViewProps) {
   return (
     <div className="space-y-4 bg-white dark:bg-gray-900 p-4 rounded-lg shadow-md">
@@ -34,6 +36,12 @@ export function ProductDetailView({ product, onBack }: ProductDetailViewProps) {
         <p className="text-sm text-gray-600 dark:text-gray-400">{product.condition}</p>
         {product.description && <p className="text-sm text-gray-700 dark:text-gray-300">{product.description}</p>}
       </div>
+
+      <button onClick={() => {
+        createProduct(product.title, product.brand || "", product.description || "Not a desc", 100)
+      }} className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300">
+       Create Product
+      </button>
     </div>
   );
 }

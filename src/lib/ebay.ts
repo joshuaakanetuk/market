@@ -1,6 +1,8 @@
 // Create base url
 
 const SEARCH_URL = "http://localhost:8080/api/ebay/search";
+const PRODUCT_URL = "http://localhost:8080/products";
+
 import axios from 'axios';
 import { EbayProduct } from '../hooks/useEbaySearch';
 
@@ -21,3 +23,23 @@ export const searchEbayProducts = async (query: string, limit = 10) => {
     return [];
   }
 };
+
+export const createProduct = async (name: string, brand: string, description: string, upc: number ) => {
+  try {
+    const response = await axios(`${PRODUCT_URL}`, {
+      method: 'POST',
+      data: {
+        name,
+        brand,
+        description,
+        upc
+      }
+    });
+    console.log(response)
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching eBay products:", error);
+    return [];
+  }
+};
+
